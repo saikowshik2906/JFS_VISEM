@@ -19,18 +19,15 @@ subjects.forEach(item => {
 // Optional: form submit
 document.getElementById("regForm").addEventListener("submit", function(e){
     e.preventDefault();
-      e.preventDefault();
 
     let selectedSubjects = [];
     let totalFee = 0;
 
-    subjects.forEach(sub => {
+    subjects.forEach((sub) => {
         if (sub.checked) {
-
             // Get subject name from the label text
             let subjectName = sub.parentElement.innerText.trim();
             selectedSubjects.push(subjectName);
-
             totalFee += parseInt(sub.value);
         }
     });
@@ -41,11 +38,35 @@ document.getElementById("regForm").addEventListener("submit", function(e){
     }
 
     let studentName = document.getElementById("name").value;
+    let numberedList = selectedSubjects
+        .map((s, i) => (i + 1) + ". " + s)
+        .join("\n");
 
     let message =
         "Student Name: " + studentName + "\n\n" +
-        "Selected Subjects:\n- " + selectedSubjects.join("\n- ") + "\n\n" +
+        "Selected Subjects:\n" + numberedList + "\n\n" +
         "Total Fee: ₹" + totalFee;
 
-    document.getElementsByClassName("final")[0].innerText=message
+    const finalDiv = document.getElementsByClassName("final")[0];
+    finalDiv.innerHTML = '';
+
+    const pre = document.createElement('pre');
+    pre.textContent = message;
+    pre.style.whiteSpace = 'pre-wrap';
+
+    const closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.id = 'closeFinal';
+    closeBtn.textContent = 'Close';
+    closeBtn.style.display = 'inline-block';
+    closeBtn.style.marginTop = '10px';
+
+    closeBtn.addEventListener('click', function() {
+        finalDiv.style.display = 'none';
+    });
+
+    finalDiv.appendChild(pre);
+    finalDiv.appendChild(closeBtn);
+
+    finalDiv.style.display = 'block';
 });
