@@ -43,8 +43,16 @@ function showInventor() {
             info: "John McCarthy created Lisp in 1958 and is considered one of the founders of AI."
         }
     };
-    if(inventor==="gosling") document.getElementsByClassName("circle-image")[0].style.borderRadius = "0";
-    else document.getElementsByClassName("circle-image")[0].style.borderRadius = "50%";
+    if(inventor==="gosling")
+    {
+        document.getElementsByClassName("circle-image")[0].style.borderRadius = "0";
+        document.getElementsByClassName("circle-image")[0].style.border= "none" ;
+    }
+    else
+    {
+        document.getElementsByClassName("circle-image")[0].style.borderRadius = "50%";
+        document.getElementsByClassName("circle-image")[0].style.boxShadow = "0 0 0 5px #555";
+    }
     
     if (inventor === "") {
         document.getElementById("inventorImage").src = "";
