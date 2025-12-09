@@ -4,7 +4,7 @@ package com.skillnext;
  * Hello world!
  *
  */
-public class App 
+public class Fibonacci
 {
     public static void main( String[] args )
     {
