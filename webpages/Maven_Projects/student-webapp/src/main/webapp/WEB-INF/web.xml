@@ -1,0 +1,14 @@
+<web-app>
+    <display-name>Student Web Application</display-name>
+
+    <servlet>
+        <servlet-name>StudentServlet</servlet-name>
+        <servlet-class>com.skillnext1.StudentServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>StudentServlet</servlet-name>
+        <url-pattern>/saveStudent</url-pattern>
+    </servlet-mapping>
+
+</web-app>
